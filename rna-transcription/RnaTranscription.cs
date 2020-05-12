@@ -18,9 +18,7 @@ public static class RnaTranscription
                 answer = answer + "A";
             else if (nucleotide_Given[i] == 'A')
                 answer = answer + "U";
-            else if (nucleotide_Given[i] != 'G' || nucleotide_Given[i] != 'C' ||
-                nucleotide_Given[i] != 'T' || nucleotide_Given[i] != 'A')
-                throw new System.ArgumentException("Provide correct nucleotide");
+            else throw new System.ArgumentException("Provide correct nucleotide");
         }
         return answer;
 
