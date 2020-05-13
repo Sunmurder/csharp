@@ -5,7 +5,7 @@ public static class Gigasecond
 {
     public static DateTime Add(DateTime moment)
     {
-        DateTime newTime = moment.AddSeconds(Math.Pow(10,9));
+        DateTime newTime = moment.AddSeconds(1e9);
         return newTime;
     }
 }
