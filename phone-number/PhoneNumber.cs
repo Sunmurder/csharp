@@ -6,19 +6,11 @@ public class PhoneNumber
 {
     public static string Clean(string phoneNumber)
     {
-        //exercise is to clean the input (e.g. +1 (613)-995-0253 to 6139950253
-        //format (NXX)-NXX-XXXX where 2<n<9 && 0<x<9
-
-        //(223) 456-7890 => 2234567890
-     
-        char[] phoneNumberArray = phoneNumber.Where(c => char.IsDigit(c)).ToArray(); // (223) 456-7890 => 2234567890
-
-        //if (phoneNumberArray.Length <= 9 || phoneNumberArray.Length >= 12) // lenght 2234567890 = 10
-        //throw new ArgumentException(); //falls through
-        if (phoneNumberArray.Length == 11 && (int)Char.GetNumericValue(phoneNumberArray[0]) == 1 && (int)Char.GetNumericValue(phoneNumberArray[1]) >= 2 && (int)Char.GetNumericValue(phoneNumberArray[4]) >= 2) //falls through
-            return new String(phoneNumberArray, 1, 10);//new string (phoneNumberArray.Skip(0).ToString());
-        else if (phoneNumberArray.Length == 10 && (int)Char.GetNumericValue(phoneNumberArray[0]) >= 2 && (int)Char.GetNumericValue(phoneNumberArray[3]) >= 2) // lenght 2234567890 = 10, [0]=2, [3]>2
-            return new string(phoneNumberArray); //above is true. Return the number
-        throw new ArgumentException(); //, N is less than 2
+       char[] phoneNumberArray = phoneNumber.Where(c => char.IsDigit(c)).ToArray(); //removing characters (223) 456-7890 => 2234567890
+       if (phoneNumberArray.Length == 11 && (int)Char.GetNumericValue(phoneNumberArray[0]) == 1 && (int)Char.GetNumericValue(phoneNumberArray[1]) >= 2 && (int)Char.GetNumericValue(phoneNumberArray[4]) >= 2) //get numeric value from char array and roll through conditions
+            return new String(phoneNumberArray, 1, 10);//return string dropping +1;
+        else if (phoneNumberArray.Length == 10 && (int)Char.GetNumericValue(phoneNumberArray[0]) >= 2 && (int)Char.GetNumericValue(phoneNumberArray[3]) >= 2) // get numeric value from char array and compare to given conditions
+            return new string(phoneNumberArray); //return string
+        throw new ArgumentException(); //all else are exceptions
     }
 }
