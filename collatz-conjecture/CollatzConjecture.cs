@@ -6,8 +6,20 @@ public static class CollatzConjecture
     public static int Steps(int number)
     {
         if (number <= 0)
-            throw new ArgumentOutOfRangeException(); // check the number for being more than zero
-        else if (number) // if even delete by two, check result. i++ for every transaction
+            throw new ArgumentOutOfRangeException();
+        int opsIncremental = 0;
+        while (number != 1)
+            if (number % 2 == 0)
+            {
+                number = number / 2;
+                opsIncremental++;
+            }
+            else if (number % 2 != 0)
+            {
+                number = (number*3) + 1;
+                opsIncremental++;
+            }
+        return opsIncremental;
 
     }
 }
